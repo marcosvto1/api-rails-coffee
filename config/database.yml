@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: marcos
+  password: 122896
+  host: localhost
+
+development:
+  <<: *default
+  database: find_my_coffe_api_development
+
+test:
+  <<: *default
+  database: find_my_coffe_api_test
+
+production:
+  <<: *default
+  database: find_my_coffe_api_production
+  username: find_my_coffe_api
+  password: <%= ENV['FIND_MY_COFFE_API_DATABASE_PASSWORD'] %>
